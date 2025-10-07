@@ -137,11 +137,11 @@ const TopBar = ({
         )}
         {!mobileView && (
           <div className={mobileView ? "right" : "flex-right right w-80 column-gap-15"} style={!loggedin ? { width: "80%" } : {}}>
-            <div className="left">
+            {/* <div className="left">
               {!window.location.href.includes("employee/user/login") && !window.location.href.includes("employee/user/language-selection") && (
                 <ChangeCity dropdown={true} t={t} />
               )}
-            </div>
+            </div> */}
             <div className="left">
               {!window.location.href.includes("employee/user/login") &&
               !window.location.href.includes("employee/user/language-selection") && (
