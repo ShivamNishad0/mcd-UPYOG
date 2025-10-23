@@ -88,6 +88,11 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
       const hrmsResponse = await HrmsService.search(info?.tenantId, { codes: info?.userName });
       const employee = hrmsResponse?.Employees?.[0];
       const zone = employee?.jurisdictions?.[0]?.zone;
+      const designation = employee?.assignments?.[0]?.designation;
+
+      if (designation) {
+        Digit.SessionStorage.set("Employee.designation", designation);
+      }
       if (zone) {
         Digit.SessionStorage.set("Employee.zone", zone);
       }
