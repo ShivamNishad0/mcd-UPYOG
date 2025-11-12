@@ -71,6 +71,11 @@ public class EmployeeQueryBuilder {
 			builder.append(" and lower(employee.code) IN (").append(createQuery(codes)).append(")");
 			addToPreparedStatement(preparedStmtList, codes);
 		}
+		if (!CollectionUtils.isEmpty(criteria.getZones())) {
+		    builder.append(" AND jurisdiction.zone IN (").append(createQuery(criteria.getZones())).append(")");
+		    preparedStmtList.addAll(criteria.getZones());
+		}
+
 		if(!CollectionUtils.isEmpty(criteria.getIds())){
 			builder.append(" and employee.id IN (").append(createQuery(criteria.getIds())).append(")");
 			addToPreparedStatement(preparedStmtList, criteria.getIds());
