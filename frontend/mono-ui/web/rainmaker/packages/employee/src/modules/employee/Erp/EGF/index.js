@@ -245,7 +245,7 @@ async fetchTTL() {
     const subdomainurl = finEnv ? `-${finEnv}.${domainurl}` : `.${domainurl}`;
 
     const erp_url =
-      loc.protocol + "//" + getTenantId().split(".")[1] + subdomainurl + menuUrl;
+      loc.protocol + "//" + subdomainurl + menuUrl;
 
     this.setState({ isLoading: true, lastUrl: menuUrl }, () => {
       const form = document.getElementById("erp_form");
