@@ -28,7 +28,7 @@ import externalRoutes from "./exterenalURL";
 // import PTHome from "modules/employee/PropertyTax/PTHome";
 
 //Redirection Url
-const redirectionUrl = "/user/login";
+const redirectionUrl = "/digit-ui/employee/user/login";
 
 const routes = [
   {
@@ -53,7 +53,7 @@ const routes = [
     path: "language-selection",
     component: LanguageSelection,
     needsAuthentication: false,
-    redirectionUrl: "/user/login",
+    redirectionUrl: "/digit-ui/employee/user/login",
   },
   {
     path: "privacy-policy",
@@ -160,7 +160,7 @@ const routes = [
     options: {
       title: "COMMON_BOTTOM_NAVIGATION_HOME",
       hideFooter: false,
-      redirectionUrl: "/user/login",
+      redirectionUrl: "/digit-ui/employee/user/login",
       //isHomeScreen: true,
     },
   },
