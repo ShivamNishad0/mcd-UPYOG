@@ -10,7 +10,7 @@ import "./index.css";
 import RefreshIcon from "material-ui/svg-icons/navigation/refresh";
 import { fetchCaptcha } from "ui-utils/api";
 
-const LoginForm = ({ handleFieldChange, form, onForgotPasswdCLick, logoUrl }) => {
+const LoginForm = ({ handleFieldChange, form, onForgotPasswdCLick, logoUrl, submitForm }) => {
   const fields = form.fields || {};
   const submit = form.submit;
   const [captchaImage, setCaptchaImage] = useState("");
@@ -90,14 +90,47 @@ const LoginForm = ({ handleFieldChange, form, onForgotPasswdCLick, logoUrl }) =>
             </div>
           </div>
           <Label style={{ marginBottom: "12px" }} className="text-center" bold={true} dark={true} fontSize={16} label="CORE_COMMON_LOGIN" />
-          <TextField onChange={(e, value) => handleFieldChange("username", value)} {...fields.username} />
-          <TextField onChange={(e, value) => handleFieldChange("password", value)} {...fields.password} />
+          <TextField
+            onChange={(e, value) => handleFieldChange("username", value)}
+            {...fields.username}
+            onPaste={(e) => e.preventDefault()}
+            onCopy={(e) => e.preventDefault()}
+            onCut={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                submitForm();
+              }
+            }}
+          />
+          <TextField
+            onChange={(e, value) => handleFieldChange("password", value)}
+            {...fields.password}
+            onPaste={(e) => e.preventDefault()}
+            onCopy={(e) => e.preventDefault()}
+            onCut={(e) => e.preventDefault()}
+            onContextMenu={(e) => e.preventDefault()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                submitForm();
+              }
+            }}
+          />
           <CityPicker onChange={handleFieldChange} fieldKey="city" field={fields.city} />
           <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "10px" }}>
             <div style={{ flex: 1 }}>
               <TextField
                 {...fields.captcha}
                 onChange={(e, v) => handleFieldChange("captcha", v)}
+                onPaste={(e) => e.preventDefault()}
+                onCopy={(e) => e.preventDefault()}
+                onCut={(e) => e.preventDefault()}
+                onContextMenu={(e) => e.preventDefault()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    submitForm();
+                  }
+                }}
               />
             </div>
             <div style={{
@@ -148,6 +181,7 @@ const LoginForm = ({ handleFieldChange, form, onForgotPasswdCLick, logoUrl }) =>
             }}
             variant={"contained"}
             color={"primary"}
+            type="submit"
           >
             <Label buttonLabel={true} labelStyle={{ fontWeight: 500 }} label="CORE_COMMON_CONTINUE" />
           </Button>
@@ -159,3 +193,4 @@ const LoginForm = ({ handleFieldChange, form, onForgotPasswdCLick, logoUrl }) =>
 };
 
 export default LoginForm;
+
